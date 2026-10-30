@@ -331,7 +331,8 @@
       <p>Feliz cumpleaños y gracias por tu amistad.</p>
     </div>
   </dialog>
-  <div class="surprise-controls">
+  <div class="surprise-tools">
+  <div class="surprise-controls" id="surprise-controls">
     <button class="note-trigger" type="button" aria-haspopup="dialog" aria-controls="birthday-note" aria-expanded="false">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <rect x="3" y="5" width="18" height="14" rx="3"></rect>
@@ -345,9 +346,16 @@
     </button>
     <p class="music-status" role="status"></p>
   </div>
+    <button class="controls-toggle" type="button" aria-label="Ocultar botones" aria-controls="surprise-controls" aria-expanded="true" hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="m9 6 6 6-6 6"></path>
+      </svg>
+    </button>
+  </div>
   <script src="js/main.js"></script>
   <script src="js/ambience.js"></script>
   <script src="js/note.js"></script>
+  <script src="js/controls.js"></script>
 </body>
 
 </html>

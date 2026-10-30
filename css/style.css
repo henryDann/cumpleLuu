@@ -1428,16 +1428,58 @@ body {
   }
 }
 
-.surprise-controls {
+.surprise-tools {
   position: fixed;
-  right: max(16px, env(safe-area-inset-right));
+  right: env(safe-area-inset-right, 0px);
   bottom: max(16px, env(safe-area-inset-bottom));
   z-index: 30;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: calc(100% - 16px);
+}
+
+.surprise-controls {
   display: flex;
   flex-direction: column;
   gap: 8px;
   width: 190px;
-  max-width: calc(100% - 32px);
+  max-width: calc(100vw - 80px);
+}
+
+.surprise-controls[hidden],
+.controls-toggle[hidden] {
+  display: none;
+}
+
+.controls-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36px;
+  width: 36px;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid rgba(255, 218, 129, 0.4);
+  border-right: 0;
+  border-radius: 12px 0 0 12px;
+  background: rgba(18, 24, 18, 0.95);
+  color: #ffe6a2;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.controls-toggle:hover {
+  background: #403112;
+}
+
+.controls-toggle:focus-visible {
+  outline: 2px solid #ffe6a2;
+  outline-offset: -4px;
+}
+
+.controls-toggle[aria-expanded="false"] svg {
+  transform: rotate(180deg);
 }
 
 .surprise-controls > button {
