@@ -8,6 +8,7 @@ if (controlsToggle && controlsPanel) {
     controlsToggle.setAttribute('aria-label', visible ? 'Ocultar botones' : 'Mostrar botones');
   }
 
+  setControlsVisible(false);
   controlsToggle.hidden = false;
   controlsToggle.addEventListener('click', () => {
     setControlsVisible(controlsPanel.hidden);
