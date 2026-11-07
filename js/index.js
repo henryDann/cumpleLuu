@@ -19,7 +19,15 @@ if (title) {
 // Mantener la portada como documento principal evita perder el audio al navegar.
 const openButton = document.querySelector('a.btn[href="flower.html"]');
 let surpriseFrame;
+let openingTimer;
 const introPageTitle = document.title;
+
+function resetGiftOpening() {
+  window.clearTimeout(openingTimer);
+  openingTimer = undefined;
+  openButton.classList.remove('is-opening');
+  openButton.removeAttribute('aria-disabled');
+}
 
 function sendMusicState() {
   if (!surpriseFrame?.contentWindow) return;
@@ -52,9 +60,17 @@ if (openButton) {
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
     if (!window.birthdayMusic) return;
     event.preventDefault();
-    if (surpriseFrame) return;
+    if (surpriseFrame || openingTimer !== undefined) return;
     history.pushState(null, '', '#sorpresa');
-    showSurprise(true);
+    // El audio se inicia durante el clic, antes de la animación de apertura.
+    window.birthdayMusic.start();
+    openButton.classList.add('is-opening');
+    openButton.setAttribute('aria-disabled', 'true');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    openingTimer = window.setTimeout(() => {
+      resetGiftOpening();
+      showSurprise(false);
+    }, reducedMotion ? 0 : 850);
   });
 
   window.addEventListener('birthday-music-state', sendMusicState);
@@ -65,6 +81,7 @@ if (openButton) {
   });
 
   window.addEventListener('popstate', () => {
+    resetGiftOpening();
     if (location.hash === '#sorpresa') {
       showSurprise(false);
     } else {

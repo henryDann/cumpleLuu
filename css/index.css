@@ -379,7 +379,59 @@ body.surprise-open {
   }
 }
 
+.btn::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -60%;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(255, 229, 150, 0.55), rgba(255, 171, 87, 0.12) 38%, transparent 66%);
+  pointer-events: none;
+}
+
+.btn.is-opening {
+  pointer-events: none;
+  transform: none;
+}
+
+.btn.is-opening .gift-lid,
+.btn.is-opening .gift-bow {
+  animation: gift-lift 850ms ease-in both;
+}
+
+.btn.is-opening .gift-box {
+  animation: gift-shake 500ms ease-in-out;
+}
+
+.btn.is-opening::before {
+  animation: gift-glow 850ms ease-out both;
+}
+
+@keyframes gift-lift {
+  0%, 20% { transform: translateY(0) rotate(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateY(-90px) rotate(-16deg); opacity: 0; }
+}
+
+@keyframes gift-shake {
+  0%, 100% { transform: rotate(0); }
+  25%, 75% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@keyframes gift-glow {
+  0% { opacity: 0; transform: scale(0.6); }
+  65% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+
 @media (prefers-reduced-motion: reduce) {
+  .btn.is-opening *, .btn.is-opening::before {
+    animation: none;
+  }
+
   .title span {
     animation: none;
     opacity: 1;
