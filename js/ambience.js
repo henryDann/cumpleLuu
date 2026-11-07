@@ -74,7 +74,7 @@ if (musicButton && window.parent !== window) {
 } else if (typeof window.Audio === 'function') {
   const label = musicButton?.querySelector('.music-label');
   const status = document.querySelector('.music-status');
-  const audio = new window.Audio('audio/ma\u00f1anitas.mp3');
+  const audio = new window.Audio('audio/cumpleRap.mp3');
   audio.preload = 'metadata';
   audio.volume = 0.65;
   let playing = false;
