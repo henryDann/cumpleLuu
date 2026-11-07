@@ -1648,8 +1648,38 @@ body {
   touch-action: manipulation;
 }
 
-.controls-toggle:hover {
+.controls-toggle[aria-expanded="false"] {
+  border-color: #ffd45c;
+  color: #fff3bd;
+  animation: controls-glow 2s ease-in-out infinite;
+}
+
+@keyframes controls-glow {
+  0%, 100% {
+    background-color: #50390f;
+    box-shadow: -3px 0 14px rgba(255, 196, 52, 0.45);
+  }
+  50% {
+    background-color: #987019;
+    box-shadow: -4px 0 24px 5px rgba(255, 202, 64, 0.85),
+      -8px 0 46px 10px rgba(255, 179, 30, 0.35),
+      inset 0 0 10px rgba(255, 241, 173, 0.3);
+  }
+}
+
+.controls-toggle:hover,
+.controls-toggle:focus-visible {
+  animation: none;
   background: #403112;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .controls-toggle[aria-expanded="false"] {
+    animation: none;
+    background: #705016;
+    border-color: #ffd45c;
+    box-shadow: -3px 0 16px rgba(255, 196, 52, 0.5);
+  }
 }
 
 .controls-toggle:focus-visible {

@@ -76,6 +76,7 @@ if (musicButton && window.parent !== window) {
   const status = document.querySelector('.music-status');
   const audio = new window.Audio('audio/cumpleRap.mp3');
   audio.preload = 'metadata';
+  audio.loop = true;
   audio.volume = 0.65;
   let playing = false;
   let busy = false;
