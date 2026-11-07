@@ -1712,7 +1712,7 @@ body {
   margin-top: 18px;
 }
 
-.note-content p:nth-child(2) {
+.note-content .note-highlight {
   padding-left: 14px;
   border-left: 2px solid #c6a65f;
   color: #7b5b2e;
