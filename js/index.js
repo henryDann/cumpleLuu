@@ -34,7 +34,7 @@ function showSurprise(startMusic) {
   if (surpriseFrame) return;
   surpriseFrame = document.createElement('iframe');
   surpriseFrame.className = 'surprise-frame';
-  surpriseFrame.title = 'Sorpresa de cumpleaños para Zulema';
+  surpriseFrame.title = 'Sorpresa de cumpleaños para Luu';
   surpriseFrame.src = openButton.href;
   surpriseFrame.addEventListener('load', () => {
     sendMusicState();
@@ -42,7 +42,7 @@ function showSurprise(startMusic) {
   });
   document.body.appendChild(surpriseFrame);
   document.body.classList.add('surprise-open');
-  document.title = 'Feliz Cumpleaños Zulema';
+  document.title = 'Feliz Cumpleaños Luu';
   // Se invoca en el propio evento del clic, antes de cualquier espera.
   if (startMusic) window.birthdayMusic?.start();
 }
